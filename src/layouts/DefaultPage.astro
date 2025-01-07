@@ -1,0 +1,44 @@
+---
+type Props = {
+	title: string;
+	description: string;
+};
+
+const { title, description } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="en" dir="ltr">
+	<head>
+		<title>{title}</title>
+
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="generator" content={Astro.generator} />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="description" content={description} />
+
+		<meta name="theme-color" content="" />
+
+		<link rel="canonical" href={canonicalURL} />
+
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="mask-icon" href="/favicon.svg" color="#000" />
+
+		<link rel="sitemap" href="/sitemap-index.xml" />
+
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:locale" content="en_US" />
+		<meta property="og:description" content={description} />
+		<meta property="og:site_name" content="" />
+		<meta property="og:url" content={canonicalURL} />
+	</head>
+	<body>
+		<main id="main-content">
+			<slot />
+		</main>
+	</body>
+
+</html>

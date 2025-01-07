@@ -1,0 +1,11 @@
+---
+import type { JSONContent } from '@tiptap/core'
+
+type Props = {
+    rawJson: JSONContent
+}
+
+const { rawJson } = Astro.props
+
+console.dir(rawJson)
+---
