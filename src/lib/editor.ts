@@ -6,12 +6,10 @@ import CustomComponent from "./editorComponents/customComponent";
 import Counter from "src/components/ExamplePreactComponent.tsx";
 import Preact from "src/lib/editorComponents/preact.ts"
 
-const editorElement = document.querySelector<HTMLElement>("#editor");
-const editorContentTemplate =
-	document.querySelector<HTMLTemplateElement>("#editor-content")?.innerHTML ?? "";
+const template = document.querySelector<HTMLTemplateElement>("[data-template]")!;
 
 const editor = new Editor({
-	...(editorElement ? { element: editorElement } : {}),
+	element: template.parentElement!,
 	extensions: [
 		StarterKit,
 		Highlight,
@@ -19,10 +17,14 @@ const editor = new Editor({
 			types: ["heading", "paragraph"],
 		}),
 		CustomComponent,
+		// it seems like tiptap needs to be told the props
+		// upfront, otherwise it doesnt pass them to the component
+		// is there a way to avoid this?
 		Preact("coun-ter", Counter, { count: { default: 0 } }),
 	],
-	content: editorContentTemplate,
+	content: template.innerHTML,
 });
+template.remove();
 
 const buttons = [
 	{

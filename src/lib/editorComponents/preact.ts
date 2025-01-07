@@ -19,15 +19,19 @@ export default function createNodeForPreactComponent<Props extends {}>(
             return props => new PreactNodeView(component, props, { tag })
         },
         renderHTML({ node }) {
-            return [
-                tag,
-                node.attrs,
-                // Is this meaningfully inefficient?
-                // If it is, it is probably just as simple to run preact's
-                // browser renderer with zeed-dom's VHTMLDocument as the
-                // parent DOM element.
-                parseHTML(renderToString(Preact.h(component, node.attrs as any)))
-            ]
+            if (import.meta.env.SSR) {
+                return [
+                    tag,
+                    node.attrs,
+                    // Is this meaningfully inefficient?
+                    // If it is, it is probably just as simple to run preact's
+                    // browser renderer with zeed-dom's VHTMLDocument as the
+                    // parent DOM element.
+                    parseHTML(renderToString(Preact.h(component, node.attrs as any)))
+                ]
+            } else {
+                return [ tag, node.attrs ]
+            }
         },
         parseHTML() {
             return [ { tag } ]

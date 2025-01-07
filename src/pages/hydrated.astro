@@ -1,0 +1,27 @@
+---
+import Layout from "@layouts/DefaultPage.astro";
+import Content from "@components/Content.astro";
+import rawJson from "@assets/output.json";
+import "@styles/editor.css";
+---
+<script src="src/lib/editor.ts"/>
+<Layout title="tiptap output" description="from static test json">
+	<div class="menu-bar">
+		<button id="heading1">H1</button>
+		<button id="heading2">H2</button>
+		<button id="heading3">H3</button>
+		<button id="bold">Bold</button>
+		<button id="italic">Italic</button>
+		<button id="strike">Strike</button>
+		<button id="highlight">Highlight</button>
+		<button id="align-left">Left</button>
+		<button id="align-center">Center</button>
+		<button id="align-right">Right</button>
+		<button id="align-justify">Justify</button>
+		<button id="insert-custom">Insert Custom Component</button>
+		<button id="insert-framework">Insert Framework Component</button>
+	</div>
+	<div data-template>
+		<Content {rawJson} />
+	</div>
+</Layout>
