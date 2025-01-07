@@ -1,8 +1,11 @@
-# Blog Starter for Astro
+# Custom tiptap component WIP
 
-- Opinionated unstyled starter for Astro meant to cover the "plumbing" and linting/formatting
-- Prettier and eslint with [typescript-eslint](https://typescript-eslint.io) using the optional [`config(...)` helper fucntion](https://typescript-eslint.io/packages/typescript-eslint#config)
-- Paginated blog with tags using content collections
-- Custom minimal tailwind base
-- Handles themes without FOUC and provides toggles
-- Most code is stolen from [@Princesseuh](https://github.com/Princesseuh)
+- [src/lib/editor.ts](./src/lib/editor.ts)
+- [src/lib/editorComponents/customComponent.ts](./src/lib/editorComponents/customComponent.ts)
+- [src/components/Editor.astro](./src/components/Editor.astro)
+- [src/components/Content.astro](./src/components/Content.astro)
+
+
+Content is where the magic needs to happen, gotta import predined components and replace with astro component 
+
+At the moment gotta painfully create customCompnent.ts, but ideally would make a way to automate this 

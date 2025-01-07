@@ -1,11 +1,19 @@
 ---
-import type { JSONContent } from '@tiptap/core'
+import type { JSONContent } from "@tiptap/core";
+import { generateHTML } from "@tiptap/html";
+import StarterKit from "@tiptap/starter-kit";
+import Highlight from "@tiptap/extension-highlight";
+import TextAlign from "@tiptap/extension-text-align";
+import CustomComponent from "../lib/editorComponents/customComponent";
 
 type Props = {
-    rawJson: JSONContent
-}
+	rawJson: JSONContent;
+};
 
-const { rawJson } = Astro.props
+const { rawJson } = Astro.props;
 
-console.dir(rawJson)
+
+const html = generateHTML(rawJson, [StarterKit, Highlight, TextAlign, CustomComponent]);
 ---
+
+<Fragment set:html={html} />
