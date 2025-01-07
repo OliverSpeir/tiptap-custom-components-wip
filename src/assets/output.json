@@ -1,14 +1,14 @@
 {
-    "type": "doc",
-    "content": [
-        {
-            "type": "customComponent",
-            "attrs": {
-                "name": "testCustom",
-                "props": {
-                    "foo": "bar"
-                }
-            }
-        }
-    ]
+	"type": "doc",
+	"content": [
+		{
+			"type": "customComponent",
+			"attrs": {
+				"name": "testCustom",
+				"props": {
+					"foo": "bar"
+				}
+			}
+		}
+	]
 }

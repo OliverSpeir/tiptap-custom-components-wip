@@ -1,80 +1,79 @@
 .menu-bar button {
-    background: #f4f4f4;
-    border: 1px solid #ddd;
-    border-radius: 0.25rem;
-    cursor: pointer;
-    padding: 0.5rem;
-    transition: background 0.2s ease;
+	background: #f4f4f4;
+	border: 1px solid #ddd;
+	border-radius: 0.25rem;
+	cursor: pointer;
+	padding: 0.5rem;
+	transition: background 0.2s ease;
 }
 
 .menu-bar button:hover {
-    background: #e4e4e4;
+	background: #e4e4e4;
 }
 
 .menu-bar button.is-active {
-    background: #007bff;
-    color: #fff;
-    border-color: #007bff;
-    font-weight: bold;
+	background: #007bff;
+	color: #fff;
+	border-color: #007bff;
+	font-weight: bold;
 }
 
-
 .tiptap {
-    margin: 1rem 0;
+	margin: 1rem 0;
 }
 
 .tiptap .ProseMirror {
-    border: 1px solid #ddd;
-    border-radius: 0.5rem;
-    padding: 1rem;
-    min-height: 300px;
+	border: 1px solid #ddd;
+	border-radius: 0.5rem;
+	padding: 1rem;
+	min-height: 300px;
 }
 
 .tiptap h1 {
-    font-size: 1.4rem;
+	font-size: 1.4rem;
 }
 
 .tiptap h2 {
-    font-size: 1.2rem;
+	font-size: 1.2rem;
 }
 
 .tiptap h3 {
-    font-size: 1.1rem;
+	font-size: 1.1rem;
 }
 
 .tiptap ul,
 .tiptap ol {
-    margin: 1rem;
-    padding-left: 2rem;
+	margin: 1rem;
+	padding-left: 2rem;
 }
 
 .tiptap blockquote {
-    border-left: 3px solid #ccc;
-    padding-left: 1rem;
-    color: #666;
+	border-left: 3px solid #ccc;
+	padding-left: 1rem;
+	color: #666;
 }
 
 .tiptap mark {
-    background: #faf594;
+	background: #faf594;
 }
 
 .tiptap pre {
-    background: #333;
-    color: #fff;
-    padding: 1rem;
+	background: #333;
+	color: #fff;
+	padding: 1rem;
 }
 
 .tiptap code {
-    background: #eee;
-    padding: 0.25rem;
+	background: #eee;
+	padding: 0.25rem;
 }
 
 .custom-component-placeholder {
-  background: #f0f8ff;
-  border: 1px dashed #007bff;
-  padding: 0.5rem;
-  text-align: center;
-  border-radius: 4px;
-  color: #007bff;
-  font-weight: bold;
+	background: #f0f8ff;
+	border: 1px dashed #007bff;
+	padding: 0.5rem;
+	text-align: center;
+	border-radius: 4px;
+	color: #007bff;
+	font-weight: bold;
 }

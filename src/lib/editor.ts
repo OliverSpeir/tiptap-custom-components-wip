@@ -5,7 +5,8 @@ import TextAlign from "@tiptap/extension-text-align";
 import CustomComponent from "./editorComponents/customComponent";
 
 const editorElement = document.querySelector<HTMLElement>("#editor");
-const editorContentTemplate = document.querySelector<HTMLTemplateElement>("#editor-content")?.innerHTML ?? "";
+const editorContentTemplate =
+	document.querySelector<HTMLTemplateElement>("#editor-content")?.innerHTML ?? "";
 
 const editor = new Editor({
 	...(editorElement ? { element: editorElement } : {}),
@@ -107,6 +108,8 @@ const updateButtonStates = () => {
 
 editor.on("update", updateButtonStates);
 editor.on("selectionUpdate", updateButtonStates);
-editor.on("update", () => {console.log(editor.getJSON())});
+editor.on("update", () => {
+	console.log(editor.getJSON());
+});
 
 updateButtonStates();
