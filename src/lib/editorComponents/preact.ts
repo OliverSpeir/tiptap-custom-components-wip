@@ -1,6 +1,8 @@
 import * as TipTap from "@tiptap/core"
 import * as Preact from "preact"
 import { useContext } from "preact/hooks"
+import renderToString from "preact-render-to-string"
+import { parseHTML } from "zeed-dom"
 
 export default function createNodeForPreactComponent<Props extends {}>(
     tag: string,
@@ -16,15 +18,16 @@ export default function createNodeForPreactComponent<Props extends {}>(
         addNodeView() {
             return props => new PreactNodeView(component, props, { tag })
         },
-        renderHTML({ HTMLAttributes }) {
-            /**
-             * Most components are interactive and don't need to be completely
-             * rendered to HTML, and some are static and don't need to be hydrated.
-             * 
-             * This is a stop-gap until we have a better grip on the use-cases.
-             * It might be a good idea to use preact-render-to-string, for example.
-             */
-            return [ tag, TipTap.mergeAttributes(HTMLAttributes) ]
+        renderHTML({ node }) {
+            return [
+                tag,
+                node.attrs,
+                // Is this meaningfully inefficient?
+                // If it is, it is probably just as simple to run preact's
+                // browser renderer with zeed-dom's VHTMLDocument as the
+                // parent DOM element.
+                parseHTML(renderToString(Preact.h(component, node.attrs as any)))
+            ]
         },
         parseHTML() {
             return [ { tag } ]
@@ -51,7 +54,6 @@ class PreactNodeView<Props extends {}> extends TipTap.NodeView<Preact.ComponentT
 
     #root?: HTMLElement
 
-
     constructor(
         component: Preact.ComponentType<Props>,
         props: TipTap.NodeViewRendererProps,
@@ -72,7 +74,8 @@ class PreactNodeView<Props extends {}> extends TipTap.NodeView<Preact.ComponentT
         const root = document.createElement(this.#tag)
         Preact.render(
             Preact.h(
-                NodeViewRendererPropsContext.Provider, { value: this.#props },
+                NodeViewRendererPropsContext.Provider,
+                { value: this.#props },
                 Preact.h(
                     // @ts-expect-error TODO: investigate whether this typee
                     // error can be fixed. I have a feeling it's going to be

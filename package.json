@@ -18,7 +18,9 @@
 		"@tiptap/html": "^2.11.0",
 		"@tiptap/starter-kit": "^2.10.3",
 		"astro": "^5.0.5",
-		"preact": "^10.25.4"
+		"preact": "^10.25.4",
+		"preact-render-to-string": "^6.5.12",
+		"zeed-dom": "^0.15.1"
 	},
 	"devDependencies": {
 		"@astrojs/check": "^0.9.4",
