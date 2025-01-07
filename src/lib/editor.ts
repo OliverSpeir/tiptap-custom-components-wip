@@ -3,6 +3,8 @@ import StarterKit from "@tiptap/starter-kit";
 import Highlight from "@tiptap/extension-highlight";
 import TextAlign from "@tiptap/extension-text-align";
 import CustomComponent from "./editorComponents/customComponent";
+import Counter from "src/components/ExamplePreactComponent.tsx";
+import Preact from "src/lib/editorComponents/preact.ts"
 
 const editorElement = document.querySelector<HTMLElement>("#editor");
 const editorContentTemplate =
@@ -17,6 +19,7 @@ const editor = new Editor({
 			types: ["heading", "paragraph"],
 		}),
 		CustomComponent,
+		Preact("coun-ter", Counter, { count: { default: 0 } }),
 	],
 	content: editorContentTemplate,
 });
@@ -84,6 +87,16 @@ const buttons = [
 				.chain()
 				.focus()
 				.insertCustomComponent({ name: "testCustom", props: { foo: "bar" } })
+				.run(),
+		isActive: () => false,
+	},
+	{
+		id: "insert-framework",
+		action: () =>
+			editor
+				.chain()
+				.focus()
+				.insertContent({ type: "coun-ter", attrs: { count: 12 } })
 				.run(),
 		isActive: () => false,
 	},
