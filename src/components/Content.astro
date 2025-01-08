@@ -5,6 +5,8 @@ import StarterKit from "@tiptap/starter-kit";
 import Highlight from "@tiptap/extension-highlight";
 import TextAlign from "@tiptap/extension-text-align";
 import CustomComponent from "../lib/editorComponents/customComponent";
+import Counter from "src/components/ExamplePreactComponent.tsx";
+import Preact from "src/lib/editorComponents/preact.ts";
 
 type Props = {
 	rawJson: JSONContent;
@@ -12,7 +14,13 @@ type Props = {
 
 const { rawJson } = Astro.props;
 
-const html = generateHTML(rawJson, [StarterKit, Highlight, TextAlign, CustomComponent]);
+const html = generateHTML(rawJson, [
+	StarterKit,
+	Highlight,
+	TextAlign,
+	CustomComponent,
+	Preact("coun-ter", Counter, { count: { default: 0 } })
+]);
 ---
 
 <Fragment set:html={html} />

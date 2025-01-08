@@ -9,6 +9,12 @@
 					"foo": "bar"
 				}
 			}
+		},
+		{
+			"type": "coun-ter",
+			"attrs": {
+				"count": 10
+			}
 		}
 	]
 }
